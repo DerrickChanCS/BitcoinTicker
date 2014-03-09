@@ -66,26 +66,6 @@ static void process_tuple(Tuple *t) {
   }
 }
 
-static void click_config_provider(void *context) {
-//  window_single_click_subscribe(BUTTON_ID_UP, up_click_handler);*
-//  window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
-//  window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
-}
-
-static TextLayer* handle_text_init(char *name){
-  TextLayer *tL;
-  tL = text_layer_create(GRect(0,0,144,154));
-  text_layer_set_text(tL, name);
-	text_layer_set_font(tL, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
-  text_layer_set_background_color(tL, GColorClear);
-	text_layer_set_text_alignment(tL, GTextAlignmentCenter);
-  return tL;
-}
-
-static void handle_text_deinit(TextLayer *tL){
-  text_layer_destroy(tL);
-}
-
 static TextLayer* init_text_layer(GRect location, GColor colour, GColor background, const char *res_id, GTextAlignment alignment) {
   TextLayer *layer = text_layer_create(location);
   text_layer_set_text_color(layer, colour);
@@ -139,10 +119,6 @@ static void handle_wins_init(void){
   wins[1] = window_create();
   wins[2] = window_create();
   
-  for(int i = 0; i < 3; i++){
-    window_set_click_config_provider(wins[i], click_config_provider);
-  }
-  
   init_layers();
 }
 
@@ -153,6 +129,9 @@ static void handle_wins_deinit(void){
   text_layer_destroy(time_layer1); 
   text_layer_destroy(time_layer2);
   text_layer_destroy(time_layer3);
+  text_layer_destroy(bitcoin_price);
+  text_layer_destroy(dogecoin_price);
+  text_layer_destroy(litecoin_price);
   
   window_destroy(wins[0]);
   window_destroy(wins[1]);
@@ -169,7 +148,7 @@ static void in_received_handler(DictionaryIterator *iter, void *context)
   
   //Get data
   Tuple *t = dict_read_first(iter);
-  if(t)
+  if(t != NULL)
   {
     process_tuple(t);
   }
@@ -238,9 +217,6 @@ static void window_init(Window *window){
   layer_add_child(window_layer, simple_menu_layer_get_layer(sml));
   
   handle_wins_init();
-  
-  // Clicker
-  // window_set_click_config_provider(window, click_config_provider);
 }
 
 static void window_deinit(void) {
