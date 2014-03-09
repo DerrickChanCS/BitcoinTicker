@@ -1,19 +1,20 @@
 {
-    "versionLabel": "1.0",
-    "uuid": "5c8152fe-9545-4b67-a75c-c6f148320584",
+    "versionLabel": "3.0",
+    "uuid": "0275821d-26a9-41cf-a204-2a181d729784",
     "appKeys": {
-        "KEY_LAST": 0,
-        "KEY_BID": 1
+        "KEY_DPRICE": 1,
+        "KEY_LPRICE": 2,
+        "KEY_BPRICE": 0
     },
-    "longName": "BitcoinTicker",
+    "longName": "CryptoPair",
     "versionCode": 1,
     "capabilities": [
         ""
     ],
-    "shortName": "BitcoinTicker",
-    "companyName": "KADE",
+    "shortName": "CryptoPair",
+    "companyName": "KANE",
     "watchapp": {
-        "watchface": true
+        "watchface": false
     },
     "resources": {
         "media": [
@@ -21,7 +22,22 @@
                 "menuIcon": true,
                 "type": "png",
                 "name": "LOGO",
-                "file": "images/logo.png"
+                "file": "images/logov2.png"
+            },
+            {
+                "type": "png",
+                "name": "LG_BIT",
+                "file": "images/LG_BIT.png"
+            },
+            {
+                "type": "png",
+                "name": "LG_DOGE",
+                "file": "images/LG_DOGE.png"
+            },
+            {
+                "type": "png",
+                "name": "LG_LITE",
+                "file": "images/LG_LITE.png"
             }
         ]
     }
